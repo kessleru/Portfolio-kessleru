@@ -1,0 +1,172 @@
+@import 'tailwindcss';
+
+* {
+  transition: color 0.3s ease-in;
+}
+
+@utility container {
+  padding: 1rem 4rem;
+  margin: 0 auto;
+}
+
+@theme {
+  --color-ctp-rosewater: var(--ctp-rosewater);
+  --color-ctp-flamingo: var(--ctp-flamingo);
+  --color-ctp-pink: var(--ctp-pink);
+  --color-ctp-mauve: var(--ctp-mauve);
+  --color-ctp-red: var(--ctp-red);
+  --color-ctp-maroon: var(--ctp-maroon);
+  --color-ctp-peach: var(--ctp-peach);
+  --color-ctp-yellow: var(--ctp-yellow);
+  --color-ctp-green: var(--ctp-green);
+  --color-ctp-teal: var(--ctp-teal);
+  --color-ctp-sky: var(--ctp-sky);
+  --color-ctp-sapphire: var(--ctp-sapphire);
+  --color-ctp-blue: var(--ctp-blue);
+  --color-ctp-lavender: var(--ctp-lavender);
+
+  --color-ctp-text: var(--ctp-text);
+  --color-ctp-subtext-1: var(--ctp-subtext-1);
+  --color-ctp-subtext-0: var(--ctp-subtext-0);
+  --color-ctp-overlay-2: var(--ctp-overlay-2);
+  --color-ctp-overlay-1: var(--ctp-overlay-1);
+  --color-ctp-overlay-0: var(--ctp-overlay-0);
+  --color-ctp-surface-2: var(--ctp-surface-2);
+  --color-ctp-surface-1: var(--ctp-surface-1);
+  --color-ctp-surface-0: var(--ctp-surface-0);
+  --color-ctp-base: var(--ctp-base);
+  --color-ctp-mantle: var(--ctp-mantle);
+  --color-ctp-crust: var(--ctp-crust);
+
+  --color-bg: var(--ctp-base);
+  --color-fg: var(--ctp-text);
+}
+
+@layer base {
+  :root {
+    /* Catppuccin Mocha (default) */
+    --ctp-rosewater: #f5e0dc;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-pink: #f5c2e7;
+    --ctp-mauve: #cba6f7;
+    --ctp-red: #f38ba8;
+    --ctp-maroon: #eba0ac;
+    --ctp-peach: #fab387;
+    --ctp-yellow: #f9e2af;
+    --ctp-green: #a6e3a1;
+    --ctp-teal: #94e2d5;
+    --ctp-sky: #89dceb;
+    --ctp-sapphire: #74c7ec;
+    --ctp-blue: #89b4fa;
+    --ctp-lavender: #b4befe;
+
+    --ctp-text: #cdd6f4;
+    --ctp-subtext-1: #bac2de;
+    --ctp-subtext-0: #a6adc8;
+    --ctp-overlay-2: #9399b2;
+    --ctp-overlay-1: #7f849c;
+    --ctp-overlay-0: #6c7086;
+    --ctp-surface-2: #585b70;
+    --ctp-surface-1: #45475a;
+    --ctp-surface-0: #313244;
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+  }
+
+  [data-theme='macchiato'] {
+    --ctp-rosewater: #f4dbd6;
+    --ctp-flamingo: #f0c6c6;
+    --ctp-pink: #f5bde6;
+    --ctp-mauve: #c6a0f6;
+    --ctp-red: #ed8796;
+    --ctp-maroon: #ee99a0;
+    --ctp-peach: #f5a97f;
+    --ctp-yellow: #eed49f;
+    --ctp-green: #a6da95;
+    --ctp-teal: #8bd5ca;
+    --ctp-sky: #91d7e3;
+    --ctp-sapphire: #7dc4e4;
+    --ctp-blue: #8aadf4;
+    --ctp-lavender: #b7bdf8;
+
+    --ctp-text: #cad3f5;
+    --ctp-subtext-1: #b8c0e0;
+    --ctp-subtext-0: #a5adcb;
+    --ctp-overlay-2: #939ab7;
+    --ctp-overlay-1: #8087a2;
+    --ctp-overlay-0: #6e738d;
+    --ctp-surface-2: #5b6078;
+    --ctp-surface-1: #494d64;
+    --ctp-surface-0: #363a4f;
+    --ctp-base: #24273a;
+    --ctp-mantle: #1e2030;
+    --ctp-crust: #181926;
+  }
+
+  [data-theme='frappe'] {
+    --ctp-rosewater: #f2d5cf;
+    --ctp-flamingo: #eebebe;
+    --ctp-pink: #f4b8e4;
+    --ctp-mauve: #ca9ee6;
+    --ctp-red: #e78284;
+    --ctp-maroon: #ea999c;
+    --ctp-peach: #ef9f76;
+    --ctp-yellow: #e5c890;
+    --ctp-green: #a6d189;
+    --ctp-teal: #81c8be;
+    --ctp-sky: #99d1db;
+    --ctp-sapphire: #85c1dc;
+    --ctp-blue: #8caaee;
+    --ctp-lavender: #babbf1;
+
+    --ctp-text: #c6d0f5;
+    --ctp-subtext-1: #b5bfe2;
+    --ctp-subtext-0: #a5adce;
+    --ctp-overlay-2: #949cbb;
+    --ctp-overlay-1: #838ba7;
+    --ctp-overlay-0: #737994;
+    --ctp-surface-2: #626880;
+    --ctp-surface-1: #51576d;
+    --ctp-surface-0: #414559;
+    --ctp-base: #303446;
+    --ctp-mantle: #292c3c;
+    --ctp-crust: #232634;
+  }
+
+  [data-theme='latte'] {
+    --ctp-rosewater: #dc8a78;
+    --ctp-flamingo: #dd7878;
+    --ctp-pink: #ea76cb;
+    --ctp-mauve: #8839ef;
+    --ctp-red: #d20f39;
+    --ctp-maroon: #e64553;
+    --ctp-peach: #fe640b;
+    --ctp-yellow: #df8e1d;
+    --ctp-green: #40a02b;
+    --ctp-teal: #179299;
+    --ctp-sky: #04a5e5;
+    --ctp-sapphire: #209fb5;
+    --ctp-blue: #1e66f5;
+    --ctp-lavender: #7287fd;
+
+    --ctp-text: #4c4f69;
+    --ctp-subtext-1: #5c5f77;
+    --ctp-subtext-0: #6c6f85;
+    --ctp-overlay-2: #7c7f93;
+    --ctp-overlay-1: #8c8fa1;
+    --ctp-overlay-0: #9ca0b0;
+    --ctp-surface-2: #acb0be;
+    --ctp-surface-1: #bcc0cc;
+    --ctp-surface-0: #ccd0da;
+    --ctp-base: #eff1f5;
+    --ctp-mantle: #e6e9ef;
+    --ctp-crust: #dce0e8;
+  }
+
+  body {
+    background-color: var(--ctp-base);
+    color: var(--ctp-text);
+    font-family: 'JetBrains Mono';
+  }
+}
