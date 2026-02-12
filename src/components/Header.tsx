@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Header() {
   return (
     <header className="flex justify-between shadow-md bg-ctp-mantle/40 p-1 rounded-full border-2 border-ctp-crust/20 mb-36">
@@ -13,7 +11,9 @@ function Header() {
         {['Home', 'Projects', 'Academic', 'Contact'].map(
           (item, index, items) => (
             <span key={item} className="flex items-center">
-              <a className="relative text-base cursor-pointer hover:text-ctp-green">{item}</a>
+              <a className="relative text-base cursor-pointer hover:text-ctp-green">
+                {item}
+              </a>
               {index !== items.length - 1 && (
                 <span
                   aria-hidden="true"

@@ -13,6 +13,11 @@
   margin: 0 auto;
 }
 
+@utility content-container {
+  padding: 1rem 12rem;
+  margin: 0 auto;
+}
+
 @theme {
   --color-ctp-rosewater: var(--ctp-rosewater);
   --color-ctp-flamingo: var(--ctp-flamingo);
