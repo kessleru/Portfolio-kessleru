@@ -16,6 +16,10 @@
 @utility content-container {
   padding: 1rem 4rem;
   margin: 0 auto;
+
+  @media (max-width: 640px) {
+    padding: 0;
+  }
 }
 
 @utility cursor-blink {
