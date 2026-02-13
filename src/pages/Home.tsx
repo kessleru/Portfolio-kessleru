@@ -1,4 +1,50 @@
+import { type ReactNode } from 'react';
+import TextType from '@/components/react-bits/TextType';
 import Card from '@/components/ui/Card';
+
+function highlightCode(text: string): ReactNode {
+  const tokens: { text: string; className?: string }[] = [];
+  let remaining = text;
+
+  while (remaining.length > 0) {
+    let match: RegExpMatchArray | null;
+
+    if ((match = remaining.match(/^(?:const|let|var|function|return)\b/))) {
+      tokens.push({ text: match[0], className: 'text-ctp-mauve' });
+      remaining = remaining.slice(match[0].length);
+    } else if ((match = remaining.match(/^'[^']*'?/))) {
+      tokens.push({ text: match[0], className: 'text-ctp-green' });
+      remaining = remaining.slice(match[0].length);
+    } else if ((match = remaining.match(/^\d+/))) {
+      tokens.push({ text: match[0], className: 'text-ctp-yellow' });
+      remaining = remaining.slice(match[0].length);
+    } else if ((match = remaining.match(/^[{}]/))) {
+      tokens.push({ text: match[0], className: 'text-ctp-maroon' });
+      remaining = remaining.slice(match[0].length);
+    } else if ((match = remaining.match(/^:/))) {
+      tokens.push({ text: match[0], className: 'text-ctp-green' });
+      remaining = remaining.slice(match[0].length);
+    } else {
+      const last = tokens[tokens.length - 1];
+      if (last && !last.className) {
+        last.text += remaining[0];
+      } else {
+        tokens.push({ text: remaining[0] });
+      }
+      remaining = remaining.slice(1);
+    }
+  }
+
+  return tokens.map((token, i) =>
+    token.className ? (
+      <span key={i} className={token.className}>
+        {token.text}
+      </span>
+    ) : (
+      token.text
+    ),
+  );
+}
 
 function Home() {
   return (
@@ -31,58 +77,17 @@ function Home() {
         </div>
       </div>
       <Card fileName="Perfil.tsx" className="w-full justify-self-start">
-        <pre className="overflow-x-auto text-xs leading-relaxed text-ctp-code">
-          <code>
-            <span>
-              <span className="text-ctp-mauve">const</span> pessoa ={' '}
-              <span className="text-ctp-maroon">{'{'}</span>
-            </span>
-            <br />
-            <span>
-              {'  '}nome<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-green">'Otávio Kessler Ustra'</span>,
-            </span>
-            <br />
-            <span>
-              {'  '}idade<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-yellow">20</span>,
-            </span>
-            <br />
-            <span>
-              {'  '}localizacao<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-green">'Ituiutaba, MG - Brasil'</span>,
-            </span>
-            <br />
-            <span>
-              {'  '}formacao<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-maroon">{'{'}</span>
-            </span>
-            <br />
-            <span>
-              {'    '}curso<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-green">'Ciência da Computação'</span>,
-            </span>
-            <br />
-            <span>
-              {'    '}instituicao<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-green">'IFTM Ituiutaba'</span>,
-            </span>
-            <br />
-            <span>
-              {'    '}status<span className="text-ctp-green">{':'}</span>{' '}
-              <span className="text-ctp-green">'Em andamento'</span>
-            </span>
-            <br />
-            <span>
-              {'  '}
-              <span className="text-ctp-maroon">{'}'}</span>,
-            </span>
-            <br />
-            <span>
-              <span className="text-ctp-maroon">{'}'}</span>;
-            </span>
-          </code>
-        </pre>
+        <TextType
+          as="pre"
+          className="overflow-x-auto text-xs leading-relaxed text-ctp-code"
+          text={`const pessoa = {\n  nome: 'Otávio Kessler Ustra',\n  idade: 20,\n  localizacao: 'Ituiutaba, MG - Brasil',\n  formacao: {\n    curso: 'Ciência da Computação',\n    instituicao: 'IFTM Ituiutaba',\n    status: 'Em andamento'\n  },\n};`}
+          typingSpeed={20}
+          showCursor={false}
+          loop={false}
+          cursorBlinkDuration={0}
+          variableSpeed={{ min: 15, max: 40 }}
+          renderText={highlightCode}
+        />
       </Card>
     </section>
   );
